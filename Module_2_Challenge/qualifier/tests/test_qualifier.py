@@ -16,7 +16,7 @@ from qualifier.filters import max_loan_size
 def test_save_csv():
     # @TODO: Your code here!
     # Use Path from pathlib to output the test csv to ./data/output/qualifying_loans.csv
-
+    assert test_save_csv == Path('./Module_2_Challenge/Module_2_Challenge/qualifier/data/qualifying_loans.csv')
 def test_calculate_monthly_debt_ratio():
     assert calculators.calculate_monthly_debt_ratio(1500, 4000) == 0.375
 
@@ -37,3 +37,5 @@ def test_filters():
 
     # @TODO: Test the new save_csv code!
     # YOUR CODE HERE!
+    assert test_save_csv == Path('./Module_2_Challenge/Module_2_Challenge/qualifier/data/qualifying_loans.csv').exists()
+

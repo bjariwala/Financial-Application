@@ -1,39 +1,71 @@
-# Project Title
+# BizOPs Application
 
-Just after the title, introduce your project by describing attractively what the project is about and what is the main problem that inspires you to create this project or what is the main contribution for the potential user of your project.
+Creating new features and enhancement for loan qualifier application. The programm will have the ability to allow a user to save the qualifiying loans to a CSV file so that the results can be shared as a spreadsheet.
 
 ---
 
 ## Technologies
 
-Describe the technologies required to use your project such as programming languages, libraries, frameworks, and operating systems. Be sure to include the specific versions of any critical dependencies that you have used in the stable version of your project.
+This project uses python 3.8 with the following packages:
+
+* [sys](https://docs.python.org/3/library/sys.html) - It allows operating on the interpreter as it provides access to variables and functions.
+* [fire](https://github.com/google/python-fire) - A simple way to create a CLI in python.
+* [questionary](https://pypi.org/project/questionary/) - An interactive interface for user prompts and dialogs
 
 ---
 
 ## Installation Guide
 
-In this section, you should include detailed installation notes containing code blocks and screenshots.
-
+Before running this application first install the following dependencies.
+```python
+    pip install fire
+    pip install questionary
+```
 ---
 
 ## Examples
 
-This section should include screenshots, code blocks, or animations showing how your project works.
+This prompts the user for loan application information.
 
+``` python
+python app.py --credit_score --debt --income --loan_amount --home_value
+```
 ---
 
 ## Usage
 
-This section should include screenshots, code blocks, or animations explaining how to use your project.
+Example code for applicant's financial information.
+``` python
+    def get_applicant_info():
+    """Prompt dialog to get the applicant's financial information.
+
+    Returns:
+        Returns the applicant's financial information.
+    """
+
+    credit_score = questionary.text("What's your credit score?").ask()
+    debt = questionary.text("What's your current amount of monthly debt?").ask()
+    income = questionary.text("What's your total monthly income?").ask()
+    loan_amount = questionary.text("What's your desired loan amount?").ask()
+    home_value = questionary.text("What's your home value?").ask()
+
+    credit_score = int(credit_score)
+    debt = float(debt)
+    income = float(income)
+    loan_amount = float(loan_amount)
+    home_value = float(home_value)
+
+    return credit_score, debt, income, loan_amount, home_value
+```
 
 ---
 
 ## Contributors
 
-In this section, list all the people who contribute to this project; since you may want to be reached by recruiters or potential collaborators, include your contact e-mail, and optionally your LinkedIn or Twitter profile.
+Presented by Bina Jariwala
 
 ---
 
 ## License
 
-When you share a project on a repository, especially a public one, it's important to choose the right license to specify others what they can and can not do with your source code and files. Use this section to include the licence you want to use.
+none

@@ -10,6 +10,7 @@ import sys
 import fire
 import questionary
 from pathlib import Path
+import csv
 
 from qualifier.utils.fileio import load_csv
 
@@ -109,9 +110,15 @@ def save_qualifying_loans(qualifying_loans):
         qualifying_loans (list of lists): The qualifying bank loans.
     """
     # @TODO: Complete the usability dialog for savings the CSV Files.
-    # YOUR CODE HERE!
+    if not qualifying_loans:
+        sys.exit("Sorry, there are no qualifying loans!")
 
+    saveFile = questionary.confirm("Would you like to save the qualifying loans?").ask()
 
+    if saveFile:
+        csvpath = questionary.text("Please enter a filepath for the saved data: (qualifying_loans.csv)").ask()
+        return save_qualifying_loans(Path(csvpath),qualifying_loans)
+              
 def run():
     """The main function for running the script."""
 
@@ -128,7 +135,6 @@ def run():
 
     # Save qualifying loans
     save_qualifying_loans(qualifying_loans)
-
 
 if __name__ == "__main__":
     fire.Fire(run)
